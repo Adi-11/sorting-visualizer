@@ -1,0 +1,33 @@
+.array-bar {
+  width: 2px;
+  background-color: rgb(0, 0, 0);
+  display: inline-block;
+  margin: 0 1px;
+}
+
+.btn-rules {
+  border: 2px solid rgb(56, 42, 246);
+  border-radius: 10px;
+  background-color: transparent;
+  text-transform: uppercase;
+  color: rgb(0, 0, 0);
+  font-family: inherit;
+  padding: 10px 25px;
+  font-size: 1.5rem;
+  letter-spacing: 3px;
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn-rules:focus,
+.btn-rules:active {
+  outline: none;
+}
+
+.btn-rules:hover {
+  outline: none;
+  background-color: rgb(56, 42, 246);
+  color: wheat;
+}
