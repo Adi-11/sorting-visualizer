@@ -8,7 +8,9 @@ import {
   Theme,
 } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
+import { BubbleSort } from "../Algos/BubbleSort";
 import * as Sorting from "../Algos/MergeSort";
+
 import "./style.css";
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -18,16 +20,16 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-const ANIMATION_SPEED_MS = 6;
+const ANIMATION_SPEED_MS = 500;
 
 // Change this value for the number of bars (value) in the array.
-const NUMBER_OF_BARS = 264;
+const NUMBER_OF_BARS = 10;
 
 // This is the main color of the array bars.
 const PRIMARY_COLOR = "black";
 
 // This is the color of array bars that are being compared throughout the animations.
-const SECONDARY_COLOR = "white";
+const SECONDARY_COLOR = "red";
 
 const randomIntFromInterval = (min: number, max: number): number => {
   // min and max included
@@ -55,7 +57,7 @@ export const SortingVisualizer: React.FC<any> = () => {
   const resetArray = (): void => {
     const array: number[] = [];
     for (let i = 0; i < NUMBER_OF_BARS; i++) {
-      array.push(randomIntFromInterval(5, 500));
+      array.push(randomIntFromInterval(5, 700));
     }
     setArray(array);
   };
@@ -63,6 +65,7 @@ export const SortingVisualizer: React.FC<any> = () => {
   const callMergeSort = (): void => {
     // console.log("Merge >>>>>>>>>>", array);
     const animation: any[] = Sorting.mergeSort(array);
+    // const animation: any[] = BubbleSort(array);
     for (let i = 0; i < animation.length; i++) {
       const arrayBars: any = document.getElementsByClassName("array-bar");
       const isColorChanges: boolean = i % 3 !== 2;
@@ -121,7 +124,7 @@ export const SortingVisualizer: React.FC<any> = () => {
           >
             Merge Sort
           </Button>
-          <Button
+          {/* <Button
             variant="contained"
             color="secondary"
             onClick={() => {
@@ -147,15 +150,14 @@ export const SortingVisualizer: React.FC<any> = () => {
             }}
           >
             Bubble Sort
-          </Button>
+          </Button> */}
         </div>
       </AppBar>
       <div
         style={{
           display: "flex",
-          alignItems: "center",
+          alignItems: "baseline",
           justifyContent: "center",
-          paddingTop: 30,
           maxWidth: "70%",
           margin: "auto",
         }}
@@ -164,8 +166,15 @@ export const SortingVisualizer: React.FC<any> = () => {
           <div
             className="array-bar"
             key={idx}
-            style={{ height: `${value}px` }}
-          ></div>
+            style={{
+              height: `${value}px`,
+              width: `20px`,
+              paddingLeft: 10,
+              paddingRight: 10,
+            }}
+          >
+            {/* <span style={{ color: "white", textAlign: "center" }}>{value}</span> */}
+          </div>
         ))}
       </div>
       <div style={{ bottom: 0, right: 0 }}>

@@ -1,6 +1,6 @@
 export const mergeSort = (array: any[]) => {
   const animations: any[] = [];
-
+  // console.log([...array]);
   if (array.length <= 1) {
     return array;
   }
@@ -10,6 +10,7 @@ export const mergeSort = (array: any[]) => {
   mergeSortHelper(array, 0, array.length - 1, auxiliaryArray, animations);
   //   console.log("Animation >>>>>>>>> ", animations);
   //   console.log("auxiliaryArray >>>>>>>>>>>>>>>>", auxiliaryArray);
+  // console.log([...animations]);
   return animations;
 };
 
